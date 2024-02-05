@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form  method="POST" >
+    {% csrf_token %}
+    <h3 style="background-color:#4b208c; color:white;"> LOGIN DETAILS  </h3><BR>
+    <BR>
+    <label> USERNAME </label>&nbsp;
+    <input type="text" name="username" placeholder="Enter your username"><BR><BR>
+    <label> PASSWORD </label>
+    <input type="password" name="password" placeholder="Enter your Password"><BR><BR>
+    <input type="submit" name="login" value="LOGIN " style="font-face: 'Comic Sans MS'; font-size: larger; color: #fff; background-color: #62529c; border: 2pt ridge ;height: 50px;width: 150px;cursor: pointer;">
+    <input type="submit" name="register" value="REGISTER " style="font-face: 'Comic Sans MS'; font-size: larger; color: #fff; background-color: #62529c; border: 2pt ridge ;height: 50px;width: 150px;cursor: pointer;">
+
+</form>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+{% endblock %}

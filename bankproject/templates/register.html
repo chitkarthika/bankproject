@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="register" method="POST">
+    {% csrf_token %}
+    <h2 style="background-color:#4b208c; color:white;"> REGISTRATION </h2>
+    <BR><BR>
+    <input type="text" name="username" placeholder="Enter Username"><BR><BR>
+    <input type="password" name="pwd1" placeholder="Enter Password"><BR><BR>
+    <input type="password" name="pwd2" placeholder="Confirm Password"><BR><BR><BR>
+    <input type="submit" style="font-face: 'Comic Sans MS'; font-size: larger; color: #fff; background-color: #62529c; border: 2pt ridge ;height: 50px;width: 150px;cursor: pointer;" >
+
+</form>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <h2 style="background-color:#4b208c; color:white;"> NEW REGISTRATION </h2>
+    <BR><BR>
+    <label> USERNAME </label>
+    <input type="text" name="username" placeholder="Enter your username"><BR><BR>
+    <label> PASSWORD </label>
+    <input type="password" name="password" placeholder="Enter your Password"><BR><BR>
+    <input type="submit" name="login" value="LOGIN FOR REGISTRATION " style="font-face: 'Comic Sans MS'; font-size: larger; color: #fff; background-color: #62529c; border: 2pt ridge ;height: 50px;width: 300px;cursor: pointer;text-align: center;">
+
+</form>
+
+{% endblock %}

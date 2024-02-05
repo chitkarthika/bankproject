@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <h2 style="background-color:#4b208c; color:white;"> CUSTOMER REGISTRATION (KYC)</h2>
+    <BR><BR>
+    <p>Please click the button for customer information</p>
+    <input type="submit" name="kyc" value="CUSTOMER KYC " style="font-face: 'Comic Sans MS'; font-size: larger; color: #fff; background-color: #62529c; border: 2pt ridge ;height: 50px;width: 350px;cursor: pointer;text-align: center">
+
+</form>
+
+{% endblock %}

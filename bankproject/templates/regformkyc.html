@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for d in query_results %}
+{{d.name}}
+{% endfor %}
+
+<!--  <form method="post" id="regform" >-->
+<!--    {% csrf_token %}-->
+<!--    -->
+<!--    <button type="submit">Save</button>-->
+<!--   -->
+<!--  </form>-->
+<!--  -->
+<!--  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<!--  <script>-->
+<!--    $("#id_country").change(function () {-->
+<!--      var url = $("#regform").attr("data-cities-url");  // get the url of the `load_cities` view-->
+<!--      var countryId = $(this).val();  // get the selected country ID from the HTML input-->
+
+<!--      $.ajax({                       // initialize an AJAX request-->
+<!--        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)-->
+<!--        data: {-->
+<!--          'country': countryId       // add the country id to the GET parameters-->
+<!--        },-->
+<!--        success: function (data) {   // `data` is the return of the `load_cities` view function-->
+<!--          $("#id_city").html(data);  // replace the contents of the city input with the data that came from the server-->
+<!--        }-->
+<!--      });-->
+
+<!--    });-->
+<!--  </script>-->
+<form action="displaydistrict"  method="POST">
+    {% csrf_token %}
+    <h2 style="background-color:#4b208c; color:white;"> NEW REGISTRATION </h2>
+    <BR><BR>
+    <input type="text" name="name" placeholder="Enter your Name" required ><BR><BR>
+     <input type="date" name="dob" placeholder="Enter your Date of Birth" required><BR><BR>
+    <input type="text" name="gender" placeholder="Enter Gender" required><BR><BR>
+
+    <input type="number" name="age" placeholder="Enter your Age" required><BR><BR>
+    <input type="number" name="phno" placeholder="Enter your Phone Number" required><BR><BR>
+
+    <input type="email" name="email" placeholder="Enter Email ID" required><BR><BR>
+   <input type="text" name="address" placeholder="Enter Address" required><BR><BR>
+
+
+<!--        <label>District</label>-->
+<!--    <a href="{% url 'displaydistrict' %}"></a>-->
+<!--    <select>-->
+<!--        <option >&#45;&#45;&#45;&#45;select-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--        {% for i in district %}-->
+<!--        <option>{{i.name}}</option>-->
+<!--        {% endfor %}-->
+
+<!--    </select><br>-->
+
+
+<!--        <label>Branch</label>-->
+<!--        <select id="br">-->
+<!--        <option>&#45;&#45;&#45;&#45;select-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--        {% for i in district %}-->
+<!--           <option>{{i.name}}</option>-->
+<!--        {% endfor %}-->
+
+<!--    </select>-->
+    <div class="category_div" id="category_div">District
+            <select name="category" class="required-entry" id="category" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);" required>
+
+            <option>----select district-----</option>
+            <option>Kozhikode</option>
+            <option >Ernakulam</option>
+            <option >Thrissur</option>
+            <option  >Thiruvananthapuram</option>
+            <option  >Kannur</option>
+            <option  >Kollam</option>
+        </select>
+        </div><BR>
+          <div class="sub_category_div" id="sub_category_div">Branch:
+            <script type="text/javascript" language="JavaScript">
+                document.write('<select name="subcategory" id="subcategory"><option value="">Branch</option></select>')
+            </script>
+               <noscript>
+                <select name="subcategory" id="subcategory" required >
+                    <option value="">Branch</option>
+                </select>
+            </noscript>
+        </div>
+        <script>
+  function dynamicdropdown(listindex)
+            {
+                document.getElementById("subcategory").length = 0;
+                switch (listindex)
+                {
+                    case "Kozhikode" :
+                        document.getElementById("subcategory").options[0]=new Option("Select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Vadakara","Vadakara");
+                        document.getElementById("subcategory").options[2]=new Option("Thamarassery","Thamarassery");
+                        document.getElementById("subcategory").options[3]=new Option("Koyilandy","Koyilandy");
+                        break;
+
+                    case "Ernakulam" :
+                        document.getElementById("subcategory").options[0]=new Option("Select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Muvattupuzha","Muvattupuzha");
+                        document.getElementById("subcategory").options[2]=new Option("Kothamangala","Kothamangala");
+                        document.getElementById("subcategory").options[3]=new Option("Kunnathunadu","Kunnathunadu");
+                        break;
+                    case "Thrissur" :
+                        document.getElementById("subcategory").options[0]=new Option("Select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("KODUNGALOOR","KODUNGALOOR");
+                        document.getElementById("subcategory").options[2]=new Option("CHAVAKKAD","CHAVAKKAD");
+                        document.getElementById("subcategory").options[3]=new Option("KUNNAMKULAM","KUNNAMKULAM");
+
+                        break;
+                    case "Thiruvananthapuram" :
+                        document.getElementById("subcategory").options[0]=new Option("Select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Nedumangadu","Nedumangadu");
+                        document.getElementById("subcategory").options[2]=new Option("Neyyattinkara","Neyyattinkara");
+                        document.getElementById("subcategory").options[3]=new Option("Varkala","Varkala");
+
+                        break;
+                        case "Kannur" :
+                        document.getElementById("subcategory").options[0]=new Option("Select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Payyanur","Payyanur");
+                        document.getElementById("subcategory").options[2]=new Option("Iritty","Iritty");
+                        document.getElementById("subcategory").options[3]=new Option("Thalassery","Thalassery");
+
+                        break;
+                        case "Kollam" :
+                        document.getElementById("subcategory").options[0]=new Option("Select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Kottarakkara","Kottarakkara");
+                        document.getElementById("subcategory").options[2]=new Option("Kunnathur","Kunnathur");
+                        document.getElementById("subcategory").options[3]=new Option("Punalur","Punalur");
+                        document.getElementById("subcategory").options[4]=new Option("Pathanapuram","Pathanapuram");
+                        break;
+                }
+                return true;
+            }
+</script>
+
+
+    <BR>
+   <label>Account Type</label>
+    <select name="account" id="account" required>
+        <option>----select-------</option>
+        <option value="s">Savings</option>
+        <option value="c">Current</option>
+    </select><BR><BR>
+    <label>Materials</label>
+    <input type="checkbox" id="1" name="1" value="debit">
+    <label for="1"> Debit Card</label>
+    <input type="checkbox" id="2" name="2" value="credit">
+    <label for="2"> Credit Card</label>
+    <input type="checkbox" id="3" name="3" value="Cheque">
+    <label for="3"> Cheque Book</label><BR>
+
+   <input type="submit"  class="btn btn-primary" >&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <a  class="btn btn-danger" href="/">Logout</a>
+
+<!--<script type="text/javascript">-->
+<!--        function getOption() {-->
+<!--            selectElement =-->
+<!--                  document.querySelector('#select1');-->
+<!--            output = selectElement.value;-->
+<!--            document.querySelector('.output').textContent = output;-->
+<!--        }-->
+<!--    </script>-->
+<!--{% for msg in messages %}-->
+<!--<h2>{{msg}}</h2>-->
+<!--{% endfor %}-->
+
+{% endblock %}
